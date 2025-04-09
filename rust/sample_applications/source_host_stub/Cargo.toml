@@ -1,0 +1,13 @@
+[package]
+edition = "2024"
+name = "source_host_stub"
+version = "0.1.0"
+
+[dependencies]
+clap = {version = "4", features = ["derive"]}
+tokio = { version = "1.41", features = ["full"] }
+wasmtime = "27.0"
+wasmtime-wasi = "27.0"
+
+[lints]
+workspace = true

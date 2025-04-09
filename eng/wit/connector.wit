@@ -1,0 +1,36 @@
+package aio:connector@1.0.0;
+
+interface host {
+    record dataset {
+        name: string,
+        poll-frequency-ms: u64,
+        additional-configuration: string,
+    }
+
+    record event {
+        name: string,
+        additional-configuration: string,
+    }
+
+    variant notification {
+        shutdown,
+
+        dataset-created(dataset),
+        dataset-updated(dataset),
+        dataset-removed(string),
+
+        event-created(event),
+        event-updated(event),
+        event-removed(string),
+    }
+
+    send: func(kind: string, name: string, data: list<u8>) -> result<_, string>;
+    poll: func() -> option<notification>;
+}
+
+world source {
+    include wasi:cli/imports@0.2.5;
+    import host;
+
+    export run: func() -> result<_, string>;
+}

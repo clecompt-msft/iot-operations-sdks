@@ -17,9 +17,11 @@ use (
 	./samples/services/leasedlock
 	./samples/services/schemaregistry
 	./samples/services/statestore
+	./samples/wasm/source
 	./services
 	./test/integration
 	./test/protocol
+	./wasm
 )
 
 // **********************************************************************
